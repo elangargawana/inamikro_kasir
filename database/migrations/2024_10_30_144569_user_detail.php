@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('nomor_hp');
             $table->string('pin');
             $table->string('nomor_ktp')->nullable();
-            $table->string('url_ktp');
+            $table->string('url_ktp')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();

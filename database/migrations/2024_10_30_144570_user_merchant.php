@@ -14,21 +14,21 @@ return new class extends Migration
         Schema::create('user_merchant', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('nama_ibu');
-            $table->string('tgl_lahir');
-            $table->string('tempat_lahir');
-            $table->enum('gender', ['laki-laki', 'perempuan']);
-            $table->enum('agama', ['islam', 'kristen', 'katolik', 'hindu', 'budha', 'lainnya']);
-            $table->enum('status_kawin', ['kawin', 'belum_kawin']);
-            $table->string('provinsi');
-            $table->string('kota');
-            $table->string('kecamatan');
-            $table->string('desa');
-            $table->string('rt');
-            $table->string('rw');
-            $table->string('kode_pos');
-            $table->string('alamat');
-            $table->string('saldo');
+            $table->string('nama_ibu')->nullable();
+            $table->string('tgl_lahir')->nullable();
+            $table->string('tempat_lahir')->nullable();
+            $table->enum('gender', ['laki-laki', 'perempuan'])->nullable();
+            $table->enum('agama', ['islam', 'kristen', 'katolik', 'hindu', 'budha', 'lainnya'])->nullable();
+            $table->enum('status_kawin', ['kawin', 'belum_kawin'])->nullable();
+            $table->string('provinsi')->nullable();
+            $table->string('kota')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('desa')->nullable();
+            $table->string('rt')->nullable();
+            $table->string('rw')->nullable();
+            $table->string('kode_pos')->nullable();
+            $table->string('alamat')->nullable();
+            $table->decimal('saldo', 15, 2)->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();

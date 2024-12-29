@@ -17,4 +17,9 @@ class UserDetail extends Model
         'nomor_ktp',
         'url_ktp'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

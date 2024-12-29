@@ -19,4 +19,9 @@ class TrxTransaksi extends Model
         'total_bayar',
         'jenis_transaksi'
     ];
+
+    public function trxTransaksiCepat()
+    {
+        return $this->hasMany(TrxTransaksiCepat::class, 'transaksi_id');
+    }
 }

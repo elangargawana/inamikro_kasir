@@ -14,6 +14,12 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'MIDTRANS_SERVER_KEY' => env('MIDTRANS_SERVER_KEY'),
+    'MIDTRANS_CLIENT_KEY' => env('MIDTRANS_CLIENT_KEY'),
+    'MIDTRANS_IS_PRODUCTION' => env('MIDTRANS_IS_PRODUCTION'),
+    'MIDTRANS_IS_SANITIZED' => env('MIDTRANS_IS_SANITIZED'),
+    'MIDTRANS_IS_3DS' => env('MIDTRANS_IS_3DS'),
+    'MIDTRANS_SNAP_URL' => env('MIDTRANS_SNAP_URL'),
 
     /*
     |--------------------------------------------------------------------------

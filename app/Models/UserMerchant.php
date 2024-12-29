@@ -28,4 +28,14 @@ class UserMerchant extends Model
         'alamat',
         'saldo'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function mSatuan()
+    {
+        return $this->hasMany(MSatuan::class, 'merchant_id');
+    }
 }
