@@ -36,6 +36,7 @@ class TransaksiCepatController extends BaseController
             DB::commit();
             return $this->sendResponse($data);
         } catch (\Exception $e) {
+            DB::rollBack();
             return $this->sendError($e->getMessage(), 500);
         }
     }
