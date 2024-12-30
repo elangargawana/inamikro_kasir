@@ -26,7 +26,7 @@ class TransaksiCepatController extends BaseController
 
             $data->trxTransaksiCepat()->createMany($params['details']);
 
-            $jenis_pembayaran = MMetodeBayar::findOrFail($params['metode_bayar_id'])->pluck('nama_metode');
+            $jenis_pembayaran = MMetodeBayar::findOrFail($params['metode_bayar_id'])->pluck('nama_metode')[0];
             if ($jenis_pembayaran == 'Midtrans') {
                 $midtransController = new MidtransController();
                 $response = $midtransController->store($data->id);
