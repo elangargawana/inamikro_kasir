@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Master\MetodeBayarController;
 use App\Http\Controllers\Master\SatuanController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\TransaksiCepatController;
@@ -18,6 +19,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('/master')->group(function () {
         Route::resource('/satuan', SatuanController::class);
+        Route::resource('/metode-bayar', MetodeBayarController::class);
     });
 
     Route::prefix('/transaksi')->group(function () {
