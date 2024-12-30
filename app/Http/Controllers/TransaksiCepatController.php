@@ -17,7 +17,7 @@ class TransaksiCepatController extends BaseController
         DB::beginTransaction();
         try {
             $params = $request->validated();
-            $params['merchant_id'] = UserMerchant::where('user_id', Auth::id())->first()->pluck('id');
+            $params['merchant_id'] = UserMerchant::where('user_id', Auth::id())->first()->pluck('id')[0];
             $params['invoice_number'] = Str::uuid();
             $params['jenis_transaksi'] = 'cepat';
 
