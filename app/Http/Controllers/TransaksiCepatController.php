@@ -36,7 +36,7 @@ class TransaksiCepatController extends BaseController
             DB::commit();
             $this->sendResponse($data);
         } catch (\Exception $e) {
-            $this->sendError($e->getMessage(), (int)$e->getCode());
+            $this->sendError($e->getMessage(), 500);
         }
     }
 }
