@@ -31,7 +31,8 @@ class StoreTrxCepatRequest extends FormRequest
             'details.*.nama_produk' => ['required', 'string'],
             'details.*.harga_satuan' => ['required', 'numeric'],
             'details.*.kuantitas' => ['required', 'numeric'],
-            'details.*.satuan_id' => ['required', 'exists:m_satuan,id']
+            'details.*.satuan_id' => ['required', 'exists:m_satuan,id'],
+            'details.*.total' => ['required', 'numeric']
         ];
     }
 }
