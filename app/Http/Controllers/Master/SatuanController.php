@@ -15,23 +15,24 @@ class SatuanController extends BaseController
     {
         try {
             $user = Auth::user()->id;
-            $data = User::with(['userMerchant.mSatuan:id,nama_satuan'])
-                ->where('id', $user)
-                ->get();
+            $merchant = UserMerchant::where('user_id', $user)->first()->pluck('id')[0];
+            $data = MSatuan::where('merchant_id', $merchant)->get();
 
-            $this->sendResponse($data);
+            return $this->sendResponse($data);
         } catch (\Exception $e) {
-            $this->sendError($e->getMessage(), 500);
+            return $this->sendError($e->getMessage(), 500);
         }
     }
 
     public function show($id)
     {
         try {
-            $data = MSatuan::findOrFail($id);
-            $this->sendResponse($data);
+            $data = MSatuan::find($id);
+            if (!$data) return $this->sendError('Satuan not found!');
+
+            return $this->sendResponse($data);
         } catch (\Exception $e) {
-            $this->sendError($e->getMessage(), 500);
+            return $this->sendError($e->getMessage(), 500);
         }
     }
 
@@ -39,37 +40,40 @@ class SatuanController extends BaseController
     {
         try {
             $params = $request->validated();
-            $params['merchant_id'] = UserMerchant::where('user_id', Auth::id())->first()->pluck('id');
+            $params['merchant_id'] = UserMerchant::where('user_id', Auth::id())->first()->pluck('id')[0];
 
             $data = new MSatuan($params);
             $data->save();
-            $this->sendResponse($data);
+            return $this->sendResponse($data);
         } catch (\Exception $e) {
-            $this->sendError($e->getMessage(), 500);
+            return $this->sendError($e->getMessage(), 500);
         }
     }
 
     public function update(StoreSatuanRequest $request, $id)
     {
         try {
-            $data = MSatuan::findOrFail($id);
+            $data = MSatuan::find($id);
+            if (!$data) return $this->sendError('Satuan not found!');
 
             $params = $request->validated();
             $data->update($params);
-            $this->sendResponse($data);
+            return $this->sendResponse($data);
         } catch (\Exception $e) {
-            $this->sendError($e->getMessage(), 500);
+            return $this->sendError($e->getMessage(), 500);
         }
     }
 
     public function destroy($id)
     {
         try {
-            $data = MSatuan::findOrFail($id);
+            $data = MSatuan::find($id);
+            if (!$data) return $this->sendError('Satuan not found!');
+
             $data->delete();
-            $this->sendResponse(null);
+            return $this->sendResponse(null);
         } catch (\Exception $e) {
-            $this->sendError($e->getMessage(), 500);
+            return $this->sendError($e->getMessage(), 500);
         }
     }
 }

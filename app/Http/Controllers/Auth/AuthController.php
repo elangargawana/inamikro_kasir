@@ -45,6 +45,8 @@ class AuthController extends BaseController
 
             $user->userDetail()->create($params);
             $user->userMerchant()->create($params);
+
+            return $this->sendResponse($user);
         } catch (\Exception $e) {
             return $this->sendError($e->getMessage(), 500);
         }
