@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('transaksi_id');
             $table->enum('status', ['pending', 'settlement', 'deny']);
-            $table->string('snap_token');
+            $table->string('snap_token')->nullable();
             $table->timestamps();
 
             $table->foreign('transaksi_id')->references('id')->on('trx_transaksi')->cascadeOnDelete();

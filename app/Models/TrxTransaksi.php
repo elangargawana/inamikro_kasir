@@ -24,4 +24,9 @@ class TrxTransaksi extends Model
     {
         return $this->hasMany(TrxTransaksiCepat::class, 'transaksi_id');
     }
+
+    public function trxTransaksiPintar()
+    {
+        return $this->hasMany(TrxTransaksiPintar::class, 'transaksi_id');
+    }
 }
