@@ -7,6 +7,7 @@ use App\Http\Controllers\Master\ProdukController;
 use App\Http\Controllers\Master\SatuanController;
 use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\TransaksiCepatController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\TransaksiPintarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::apiResource('/kategori-produk', KategoriProdukController::class);
     });
 
+    Route::apiResource('/riwayat-transaksi', TransaksiController::class)->only(['index', 'show']);
     Route::prefix('/transaksi')->group(function () {
         Route::post('/cepat', [TransaksiCepatController::class, 'store']);
         Route::post('/pintar', [TransaksiPintarController::class, 'store']);

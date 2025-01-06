@@ -29,4 +29,9 @@ class TrxTransaksi extends Model
     {
         return $this->hasMany(TrxTransaksiPintar::class, 'transaksi_id');
     }
+
+    public function mMetodeBayar()
+    {
+        return $this->belongsTo(MMetodeBayar::class, 'metode_bayar_id');
+    }
 }
