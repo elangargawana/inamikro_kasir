@@ -22,10 +22,10 @@ class StoreProdukRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'kategori_produk_id' => ['required', 'in:m_kategori_produk,id'],
+            'kategori_produk_id' => ['required', 'exists:m_kategori_produk,id'],
             'code' => ['required', 'string'],
             'nama_produk' => ['required', 'string'],
-            'satuan_id' => ['required', 'in:m_satuan,id'],
+            'satuan_id' => ['required', 'exists:m_satuan,id'],
             'stok' => ['required', 'numeric'],
             'harga_jual' => ['required', 'numeric'],
             'harga_modal' => ['required', 'numeric'],
