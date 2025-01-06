@@ -28,7 +28,7 @@ class StoreTrxPintarRequest extends FormRequest
             'total_bayar' => ['required', 'numeric'],
 
             'details' => ['required', 'array'],
-            'details.*.produk_id' => ['required', 'in:m_produk,id'],
+            'details.*.produk_id' => ['required', 'exists:m_produk,id'],
             'details.*.kuantitas' => ['required', 'numeric'],
             'details.*.total' => ['required', 'numeric']
         ];
