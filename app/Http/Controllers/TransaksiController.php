@@ -39,14 +39,9 @@ class TransaksiController extends BaseController
             $merchant_id = UserMerchant::where('user_id', Auth::id())->first()->id;
 
             $data = TrxTransaksi::with([
-                'trxTransaksiCepat' => function ($query) {
-                    $query->exists();
-                },
-                'trxTransaksiPintar' => function ($query) {
-                    $query->exists();
-                },
+                'trxTransaksiCepat',
+                'trxTransaksiPintar'
             ])->find($id);
-
             if (!$data) return $this->sendError('Transaction not found!');
             if ($data->merchant_id != $merchant_id) return $this->sendError('Not your transaction!');
 
